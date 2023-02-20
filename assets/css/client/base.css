@@ -1,0 +1,369 @@
+:root{
+    --primary-color: red;
+    --white-color: #fff;
+    --black-color: #000;
+    --text-footer-color: #8b8e96;
+    --background-color: #f7f7f7;
+    --border-color: #e1e1e1;
+}
+
+*{
+    box-sizing: inherit;
+    padding: 0;
+    margin: 0;
+}
+
+header, footer{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+html{
+    box-sizing: border-box;
+    /* 1 rem = 10px */
+    font-size: 62.5%;
+}
+
+.hr-dashed{
+    border-top: 1px dashed red;
+}
+
+.hr-white{
+    border: 0;
+    border-top: 1px ridge var(--white-color);
+    opacity: 0.2;
+}
+
+.show{
+    display: block !important;
+}
+
+.hidden{
+    display: none !important;
+}
+
+.grid_row{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+.grid_column-2{
+    width: 20%;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+
+@keyframes headerNotifyGrowth {
+    from {
+        transform: perspective(none) rotateX(90deg);
+    }
+    to {
+        /* transform: perspective(900px) rotateX(0deg) ; */
+        transform: perspective(900px) rotateX(0deg) ;
+    }
+}
+
+
+.padding-top--10{
+    padding-top: 8px;
+}
+
+.link{
+    color: #000;
+}
+.link:hover{
+    text-decoration: none;
+}
+
+
+
+/*responsive*/
+
+.grid {
+    width: 100%;
+    display: block;
+    padding: 0;
+    margin: 0 auto;   /* để cân giữa */
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col {
+    padding-left: 4px;
+    padding-right: 4px;
+    border: 2px solid white;
+}
+
+.c-1{
+    width: 8.33%;
+}
+
+.c-2{
+    width: 16.66%;
+}
+
+/*2.4 => 5 cột*/
+.c-2-4{
+    width: 20%;
+}
+
+.c-3{
+    width: 25%;
+}
+
+.c-4{
+    width: 33.32%;
+}
+
+.c-8{
+    width: 66.64%;
+}
+
+.c-9{
+    width: 75%;
+}
+.c-10{
+    width: 83.33%;
+}
+
+/* ==> đã có grid row col và class main ở style.css */
+
+/* ký tự l-... là large dùng cho pc */
+/* PC low resolution: PC có độ phân giải thấp */
+@media (min-width: 1024px) and (max-width: 1239px) {
+    .grid{
+        width: 95%;
+    }
+
+    /* l-2-4 nghĩa là large mà 2.4 * 5 = 12 => nghĩa là 1 row 5 cột */
+    /* l-2-4 là 1 cột =2.4 của cột cơ sở  (12 cột cơ sở là 1 hàng) */
+    .l-2-4 {
+        /* flex:    flex-basic(kích thước của main-size) 
+                flex-grow(kích thước của flex item-bằng 1 là chính nó) 
+                flex-shrink(ngược lại với flex-grow => giảm kích thước flex item) */
+        flex: 0 0 calc(100%/5);
+        max-width: calc(100%/5);
+    }
+
+}
+
+/* PC medium resolution: PC có độ phân giải cao */
+@media (min-width: 1240px) {
+    .grid{
+        width: 90%;
+    }
+    /* category */
+    .l-12{
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    /* product item */
+    .l-2-4 {
+        flex: 0 0 calc(100%/5);
+        max-width: calc(100%/5);
+    }
+}
+
+@media (max-width: 1240px){
+    /*web*/
+    .header-top__interactive{
+        justify-content: center !important;
+    }
+    .header-top__interactive__item .fa-heart,
+    .header-top__interactive__item .fa-random{
+        display: none;
+    }
+
+    .c-2{
+        width: 100%;
+    }
+
+    .c-2-4{
+        width: 25%;
+    }
+
+    .cuahang__product__header{
+        display: flex;
+        flex-direction: column;
+        height: fit-content !important;
+        margin: 20px 0;
+    }
+}
+
+@media (max-width: 993px){
+    /*.header-top{
+        display: none;
+    }*/
+
+    .show-element-btn{
+        display: block;
+    }
+
+    .header-top_hotline{
+        display: none !important;
+    }
+
+    .logo--wrap{
+        display: none;
+    }
+
+    .header-navbar__list > li{
+        display: none;
+    }
+
+    li.header-navbar__List__item.show-element-btn{
+        display: block !important;
+    }
+
+    /*Cửa hàng*/
+    .c-2-4{
+        width: 33.33%;
+    }
+
+    .c-3{
+        width: 100%;
+    }
+
+    .c-8{
+        width: 100%
+    }
+
+    .col-2{
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+}
+
+@media (max-width: 768px){
+   .header-navbar__category::after{
+        display: none !important;
+   }
+   .header-navbar__category{
+    margin-right: 10px;
+   }
+
+   /*Cửa hàng*/
+    .c-2-4{
+        width: 50%;
+    }
+}
+
+@media (max-width: 575px){
+   .header-top{
+        height: auto !important;
+        flex-direction: column;
+        display: none !important;
+   }
+   .header-top__interactive{
+        justify-content: center;
+   }
+   .header-top__content--wrap{
+        justify-content: center;
+   }
+   .header-top_search{
+        width: 80% !important;
+        margin-left: 10% !important;
+   }
+
+    i.showresponsive_headertop{
+        display: block !important;
+    }
+
+    .container.hr-white{
+        display: none;
+    }
+
+    /*Cửa hàng*/
+    .c-2-4{
+        width: 100%;
+    }
+
+}
+
+/* m-... dùng cho tablet */
+@media (min-width: 740px) and (max-width: 1023px){
+    .grid{
+        width: 80%;
+    }
+    /* 1 cột m-3 bằng 3 cột cơ sở */
+    .tm-3{
+        flex: 0 0 calc(100%/3);
+        max-width: calc(100%/3);
+    }
+}
+
+/* c-... dùng cho mobile */
+@media (max-width: 739px){
+    .grid{
+        width: 95%;
+    }
+    /* 1 cột c-6 bằng 6 cột cơ sở => là hiển thị 2 cột*/
+    .c-6{
+        flex: 0 0 calc(100%/2);
+        max-width: calc(100%/2);
+    }
+}
+
+/* mobile nhỏ */
+@media (max-width: 300px){
+    .grid{
+        width: 90%;
+    }
+
+    /* category */
+    /* .category-ul, .category-li{
+        display: none;
+    } */
+
+    .category{
+        position: relative;
+    }
+
+    .category-ul{
+        width: 100%;
+        position: absolute;
+        background-color: #fff;
+        top: 100%;
+        right: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .category-ul .category-li{
+        color: #000;
+        margin-left: 0;
+        margin-right: 0;
+        text-align: right;
+    }
+
+    .icon-list{
+        display: block !important;
+        color: #fff;
+        padding: 5px;
+        float: right;
+    }
+
+    .category-li{
+        display: none;
+    }
+
+    .category:hover .category-li{
+        display: block;
+    }
+
+    /* 1 cột c-12 bằng 12 cột cơ sở => là hiển thị 1 cột*/
+    .c-12{
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
